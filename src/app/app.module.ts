@@ -9,6 +9,9 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
 import { MessageComponent } from './message/message.component';
 import { FeedComponent } from './feed/feed.component';
 import { UserlistComponent } from './userlist/userlist.component';
+import { ChatFormComponent } from './chat-form/chat-form.component';
+import { ChatroomComponent } from './chatroom/chatroom.component';
+import { UserComponent } from './user/user.component';
 
 const config = {
   apiKey: 'AIzaSyA7M7i0oHfziXqIjuR9tmbf2-vT9W6d6WQ',
@@ -26,7 +29,10 @@ const config = {
     SignupFormComponent,
     MessageComponent,
     FeedComponent,
-    UserlistComponent
+    UserlistComponent,
+    ChatFormComponent,
+    ChatroomComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
