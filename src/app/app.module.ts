@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule} from 'angularfire2/auth';
+import { RouterModule} from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { LoginFormComponent } from './login-form/login-form.component';
@@ -12,15 +16,14 @@ import { UserlistComponent } from './userlist/userlist.component';
 import { ChatFormComponent } from './chat-form/chat-form.component';
 import { ChatroomComponent } from './chatroom/chatroom.component';
 import { UserComponent } from './user/user.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
-const config = {
-  apiKey: 'AIzaSyA7M7i0oHfziXqIjuR9tmbf2-vT9W6d6WQ',
-  authDomain: 'basechat-4cebb.firebaseapp.com',
-  databaseURL: 'https://basechat-4cebb.firebaseio.com',
-  projectId: 'basechat-4cebb',
-  storageBucket: 'basechat-4cebb.appspot.com',
-  messagingSenderId: '434125805191'
-};
+import { AuthService } from './services/auth.service';
+import { ChatService } from './services/chat.service';
+
+import { appRoutes } from '../routes';
+import { environment} from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -32,14 +35,18 @@ const config = {
     UserlistComponent,
     ChatFormComponent,
     ChatroomComponent,
-    UserComponent
+    UserComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(config),
-    AngularFireDatabaseModule
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    RouterModule.forRoot(appRoutes),
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
