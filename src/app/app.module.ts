@@ -40,11 +40,12 @@ import { environment} from '../environments/environment';
   ],
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    AngularFireModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    RouterModule.forRoot(appRoutes),
-    FormsModule
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [AuthService, ChatService],
   bootstrap: [AppComponent]
